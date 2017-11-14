@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PublicationManager
+namespace PublicationManager.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MediaView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MediaView : UserControl
     {
-        public MainWindow()
+        public MediaView()
         {
             InitializeComponent();
         }
