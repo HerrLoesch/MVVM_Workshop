@@ -13,5 +13,9 @@ namespace PublicationManager
     /// </summary>
     public partial class App : Application
     {
+        private void App_OnStartup(object sender, StartupEventArgs e)
+        {
+            new Bootstrapper().Run();
+        }
     }
 }

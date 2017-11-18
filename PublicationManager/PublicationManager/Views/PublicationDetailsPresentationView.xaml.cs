@@ -1,14 +1,13 @@
 ﻿using System.Windows.Controls;
-using PublicationManager.ViewModels;
 
 namespace PublicationManager.Views
 {
     /// <summary>
-    /// Interaction logic for PublicationView.xaml
+    /// Interaction logic for PublicationDetailsView.xaml
     /// </summary>
-    public partial class PublicationView : UserControl
+    public partial class PublicationDetailsPresentationView
     {
-        public PublicationView()
+        public PublicationDetailsPresentationView()
         {
             InitializeComponent();
         }
