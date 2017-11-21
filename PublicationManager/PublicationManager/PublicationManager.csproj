@@ -88,6 +88,7 @@
     <Compile Include="Infrastructure\Bootstrapper.cs" />
     <Compile Include="Infrastructure\ViewModelLocator.cs" />
     <Compile Include="Interfaces\IPublicationRepository.cs" />
+    <Compile Include="MVVM\DelegateCommand.cs" />
     <Compile Include="Services\PublicationRepository.cs" />
     <Compile Include="ViewModels\PublicationViewModel.cs" />
     <Compile Include="Views\MediumView.xaml.cs">

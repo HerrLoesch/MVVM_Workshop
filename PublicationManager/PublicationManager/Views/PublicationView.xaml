@@ -30,7 +30,9 @@
 
         <!-- actual content -->
         <Grid DockPanel.Dock="Right">
-            <ContentControl HorizontalAlignment="Center" VerticalAlignment="Center">Publication info</ContentControl>
+            <ContentControl HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button Command="{Binding InitializationCommand}">Initialize</Button>
+            </ContentControl>
         </Grid>
     </DockPanel>
 </UserControl>
