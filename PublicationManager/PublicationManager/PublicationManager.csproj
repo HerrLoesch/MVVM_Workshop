@@ -56,6 +56,8 @@
     </ApplicationDefinition>
     <Compile Include="Domain\Medium.cs" />
     <Compile Include="Domain\Publication.cs" />
+    <Compile Include="Interfaces\IPublicationRepository.cs" />
+    <Compile Include="ViewModels\PublicationsViewModel.cs" />
     <Compile Include="Views\MediumView.xaml.cs">
       <DependentUpon>MediumView.xaml</DependentUpon>
     </Compile>
@@ -123,8 +125,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
