@@ -2,12 +2,18 @@
 using System.Linq;
 using PublicationManager.Domain;
 using PublicationManager.Interfaces;
+using Tynamix.ObjectFiller;
 
 namespace PublicationManager.ViewModels
 {
     public class PublicationsViewModel
     {
         private IPublicationRepository publicationRepository;
+
+        public PublicationsViewModel()
+        {
+            Publications = Randomizer<Publication>.Create(10);
+        }
 
         public PublicationsViewModel(IPublicationRepository repository)
         {
