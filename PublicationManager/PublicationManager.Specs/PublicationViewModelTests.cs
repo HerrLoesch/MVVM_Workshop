@@ -32,14 +32,14 @@ namespace PublicationManager.Specs
         [TestMethod]
         public void WhenPublicationsViewIsShown_ThanAllAvailablePublicationsAreVisible()
         {
-            Assert.AreNotEqual(0, sut.Publications.Count());
+            sut.Publications.Should().NotBeEmpty();
             sut.ShouldRaisePropertyChangeFor(x => x.Publications);
         }
 
         [TestMethod]
         public void WhenPublicationsViewIsShown_ThanTheFirstElementInThePublicationsListIsSelected()
         {
-            Assert.AreEqual(firstPublication, sut.SelectedPublication);
+            sut.SelectedPublication.ShouldBeEquivalentTo(firstPublication);
             sut.ShouldRaisePropertyChangeFor(x => x.SelectedPublication);
         }
     }
