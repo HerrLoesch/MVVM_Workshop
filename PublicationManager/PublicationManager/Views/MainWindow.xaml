@@ -30,8 +30,7 @@
        </Menu>
        
        <!-- Main Content Area -->
-        <!--<ContentControl DockPanel.Dock="Bottom"></ContentControl>-->
-       <views:PublicationView></views:PublicationView>
+       <ContentControl x:Name="ContentArea" DockPanel.Dock="Bottom"></ContentControl>
 
     </DockPanel>
 </Window>

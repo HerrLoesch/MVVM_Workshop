@@ -11,5 +11,10 @@ namespace PublicationManager.Views
         {
             InitializeComponent();
         }
+
+        public MainWindow(PublicationView publicationView) : this()
+        {
+            ContentArea.Content = publicationView;
+        }
     }
 }
