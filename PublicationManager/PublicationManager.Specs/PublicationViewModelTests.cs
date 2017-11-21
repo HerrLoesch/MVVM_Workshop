@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using FakeItEasy;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PublicationManager.Domain;
 using PublicationManager.Interfaces;
@@ -23,6 +24,7 @@ namespace PublicationManager.Specs
             A.CallTo(() => repository.GetAll()).Returns(new List<Publication>() { firstPublication, new Publication(), new Publication() });
 
             sut = new PublicationsViewModel(repository);
+            sut.MonitorEvents();
 
             sut.Initialize();
         }
@@ -31,12 +33,14 @@ namespace PublicationManager.Specs
         public void WhenPublicationsViewIsShown_ThanAllAvailablePublicationsAreVisible()
         {
             Assert.AreNotEqual(0, sut.Publications.Count());
+            sut.ShouldRaisePropertyChangeFor(x => x.Publications);
         }
 
         [TestMethod]
         public void WhenPublicationsViewIsShown_ThanTheFirstElementInThePublicationsListIsSelected()
         {
             Assert.AreEqual(firstPublication, sut.SelectedPublication);
+            sut.ShouldRaisePropertyChangeFor(x => x.SelectedPublication);
         }
     }
 }
