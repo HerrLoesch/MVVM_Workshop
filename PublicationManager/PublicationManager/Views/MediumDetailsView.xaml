@@ -3,7 +3,30 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:viewModels="clr-namespace:PublicationManager.ViewModels"
              mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance IsDesignTimeCreatable=True, Type={x:Type viewModels:MediumEntityViewModel}}"
              d:DesignHeight="300" d:DesignWidth="300">
-    Medium Details
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="4"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Column="0" Grid.Row="0">Name:</Label>
+        <Label Grid.Column="0" Grid.Row="1">Website:</Label>
+        <Label Grid.Column="0" Grid.Row="2">Publisher:</Label>
+
+        <TextBlock Grid.Column="2" Grid.Row="0" Text="{Binding Name}"></TextBlock>
+        <TextBlock Grid.Column="2" Grid.Row="1" Text="{Binding Website}"></TextBlock>
+        <TextBlock Grid.Column="2" Grid.Row="2" Text="{Binding Publisher}"></TextBlock>
+
+    </Grid>
 </UserControl>

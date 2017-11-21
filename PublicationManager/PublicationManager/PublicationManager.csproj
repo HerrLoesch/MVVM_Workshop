@@ -90,6 +90,7 @@
     <Compile Include="Interfaces\IPublicationRepository.cs" />
     <Compile Include="MVVM\DelegateCommand.cs" />
     <Compile Include="Services\PublicationRepository.cs" />
+    <Compile Include="ViewModels\MediumEntityViewModel.cs" />
     <Compile Include="ViewModels\PublicationViewModel.cs" />
     <Compile Include="Views\MediumView.xaml.cs">
       <DependentUpon>MediumView.xaml</DependentUpon>
