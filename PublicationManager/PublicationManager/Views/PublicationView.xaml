@@ -6,7 +6,9 @@
              xmlns:local="clr-namespace:PublicationManager.Views"
              xmlns:viewModels="clr-namespace:PublicationManager.ViewModels"
              xmlns:infrastructure="clr-namespace:PublicationManager.Infrastructure"
-             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:Custom="http://www.galasoft.ch/mvvmlight" x:Class="PublicationManager.Views.PublicationView"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:Custom="http://www.galasoft.ch/mvvmlight"
+    xmlns:domain="clr-namespace:PublicationManager.Domain"
+    x:Class="PublicationManager.Views.PublicationView"
              infrastructure:ViewModelLocator.RegisterViewModel="true"
              d:DataContext="{d:DesignInstance IsDesignTimeCreatable=True, Type={x:Type viewModels:PublicationViewModel}}"
              mc:Ignorable="d" 
@@ -27,7 +29,7 @@
 
             <TextBlock DockPanel.Dock="Bottom" Margin="4"><Run Text="no elements found"/></TextBlock>
 
-            <ListBox DockPanel.Dock="Bottom"  Width="150" Margin="4,2" ItemsSource="{Binding Publications}">
+            <ListBox DockPanel.Dock="Bottom"  Width="150" Margin="4,2" ItemsSource="{Binding Publications}" SelectedItem="{Binding SelectedPublication}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Title}"/>
@@ -41,7 +43,13 @@
 
         <!-- actual content -->
         <Grid DockPanel.Dock="Right">
-            <ContentControl HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <ContentControl HorizontalAlignment="Center" VerticalAlignment="Center" Content="{Binding SelectedPublication}">
+                <ContentControl.ContentTemplate>
+                    <DataTemplate DataType="domain:Publication">
+                        <local:PublicationDetailsView />
+                    </DataTemplate>
+                </ContentControl.ContentTemplate>
+            </ContentControl>
         </Grid>
     </DockPanel>
 </UserControl>

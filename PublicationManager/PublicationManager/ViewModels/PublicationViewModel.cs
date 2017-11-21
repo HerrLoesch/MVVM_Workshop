@@ -22,6 +22,7 @@ namespace PublicationManager.ViewModels
             if (IsInDesignMode)
             {
                 Publications = Randomizer<Publication>.Create(10);
+                SelectedPublication = Publications.First();
             }
         }
 
