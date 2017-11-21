@@ -89,6 +89,7 @@
     <Compile Include="Infrastructure\ViewModelLocator.cs" />
     <Compile Include="Interfaces\IPublicationRepository.cs" />
     <Compile Include="MVVM\DelegateCommand.cs" />
+    <Compile Include="MVVM\EnhancedBooleanToVisibilityConverter.cs" />
     <Compile Include="Services\PublicationRepository.cs" />
     <Compile Include="ViewModels\MediumEntityViewModel.cs" />
     <Compile Include="ViewModels\PublicationViewModel.cs" />

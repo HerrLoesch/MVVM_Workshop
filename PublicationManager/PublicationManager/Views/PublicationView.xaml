@@ -8,11 +8,17 @@
              xmlns:infrastructure="clr-namespace:PublicationManager.Infrastructure"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:Custom="http://www.galasoft.ch/mvvmlight"
     xmlns:domain="clr-namespace:PublicationManager.Domain"
+    xmlns:mvvm="clr-namespace:PublicationManager.MVVM"
     x:Class="PublicationManager.Views.PublicationView"
              infrastructure:ViewModelLocator.RegisterViewModel="true"
              d:DataContext="{d:DesignInstance IsDesignTimeCreatable=True, Type={x:Type viewModels:PublicationViewModel}}"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300"> 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <mvvm:EnhancedBooleanToVisibilityConverter x:Key="ReverseBooleanToVisibilityConverter" Mode="Reverse" />
+        <mvvm:EnhancedBooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" Mode="Normal" />
+
+    </UserControl.Resources>
 
     <i:Interaction.Triggers>
         <i:EventTrigger>
@@ -43,6 +49,11 @@
 
         <!-- actual content -->
         <Grid DockPanel.Dock="Right">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            
             <ContentControl HorizontalAlignment="Center" VerticalAlignment="Center" Content="{Binding SelectedPublication}">
                 <ContentControl.ContentTemplate>
                     <DataTemplate DataType="domain:Publication">
@@ -50,6 +61,15 @@
                     </DataTemplate>
                 </ContentControl.ContentTemplate>
             </ContentControl>
+
+            <StackPanel Grid.Row="1" Orientation="Horizontal" Visibility="{Binding IsInEditMode, Converter={StaticResource ReverseBooleanToVisibilityConverter}}">
+                <Button Width="75">Delete</Button>
+                <Button Width="75" Command="{Binding StartEdditingCommand}">Edit</Button>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" Visibility="{Binding IsInEditMode, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <Button Width="75">Save</Button>
+                <Button Width="75" Command="{Binding StartEdditingCommand}">Cancel</Button>
+            </StackPanel>
         </Grid>
     </DockPanel>
 </UserControl>

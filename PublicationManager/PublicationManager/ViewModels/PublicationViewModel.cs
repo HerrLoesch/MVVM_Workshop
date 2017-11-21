@@ -16,6 +16,7 @@ namespace PublicationManager.ViewModels
         private IEnumerable<Publication> publications;
         private Publication selectedPublication;
         private ICommand initializationCommand;
+        private bool isInEditMode = false;
 
         public PublicationViewModel()
         {
@@ -30,6 +31,13 @@ namespace PublicationManager.ViewModels
         {
             publicationRepository = repository;
             InitializationCommand = new RelayCommand(Initialize);
+            StartEdditingCommand = new RelayCommand(() => this.IsInEditMode = true);
+        }
+
+        public bool IsInEditMode
+        {
+            get { return isInEditMode; }
+            set { Set(ref isInEditMode, value); }
         }
 
         public ICommand InitializationCommand
@@ -42,6 +50,8 @@ namespace PublicationManager.ViewModels
             Publications = publicationRepository.GetAll();
             SelectedPublication = Publications.FirstOrDefault();
         }
+
+        public ICommand StartEdditingCommand { get; set; }
 
         public IEnumerable<Publication> Publications
         {
