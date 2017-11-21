@@ -85,7 +85,7 @@
     <Compile Include="Infrastructure\Bootstrapper.cs" />
     <Compile Include="Interfaces\IPublicationRepository.cs" />
     <Compile Include="Services\PublicationRepository.cs" />
-    <Compile Include="ViewModels\PublicationsViewModel.cs" />
+    <Compile Include="ViewModels\PublicationViewModel.cs" />
     <Compile Include="Views\MediumView.xaml.cs">
       <DependentUpon>MediumView.xaml</DependentUpon>
     </Compile>

@@ -7,13 +7,13 @@ using Tynamix.ObjectFiller;
 
 namespace PublicationManager.ViewModels
 {
-    public class PublicationsViewModel : ViewModelBase
+    public class PublicationViewModel : ViewModelBase
     {
         private IPublicationRepository publicationRepository;
         private IEnumerable<Publication> publications;
         private Publication selectedPublication;
 
-        public PublicationsViewModel()
+        public PublicationViewModel()
         {
             if (IsInDesignMode)
             {
@@ -21,7 +21,7 @@ namespace PublicationManager.ViewModels
             }
         }
 
-        public PublicationsViewModel(IPublicationRepository repository)
+        public PublicationViewModel(IPublicationRepository repository)
         {
             publicationRepository = repository;
         }

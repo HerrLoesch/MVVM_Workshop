@@ -13,7 +13,7 @@ namespace PublicationManager.Specs
     [TestClass]
     public class PublicationViewModelTests
     {
-        private PublicationsViewModel sut;
+        private PublicationViewModel sut;
         private Publication firstPublication;
 
         [TestInitialize]
@@ -23,7 +23,7 @@ namespace PublicationManager.Specs
             firstPublication = new Publication();
             A.CallTo(() => repository.GetAll()).Returns(new List<Publication>() { firstPublication, new Publication(), new Publication() });
 
-            sut = new PublicationsViewModel(repository);
+            sut = new PublicationViewModel(repository);
             sut.MonitorEvents();
 
             sut.Initialize();

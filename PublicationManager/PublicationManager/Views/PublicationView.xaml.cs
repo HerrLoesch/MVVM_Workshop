@@ -26,7 +26,7 @@ namespace PublicationManager.Views
             InitializeComponent();
         }
 
-        public PublicationView(PublicationsViewModel viewModel) : this()
+        public PublicationView(PublicationViewModel viewModel) : this()
         {
             DataContext = viewModel;
         }
