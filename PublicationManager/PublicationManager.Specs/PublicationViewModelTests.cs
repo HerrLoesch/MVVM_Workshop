@@ -12,17 +12,31 @@ namespace PublicationManager.Specs
     [TestClass]
     public class PublicationViewModelTests
     {
+        private PublicationsViewModel sut;
+        private Publication firstPublication;
+
+        [TestInitialize]
+        public void Initialize()
+        {
+            var repository = A.Fake<IPublicationRepository>();
+            firstPublication = new Publication();
+            A.CallTo(() => repository.GetAll()).Returns(new List<Publication>() { firstPublication, new Publication(), new Publication() });
+
+            sut = new PublicationsViewModel(repository);
+
+            sut.Initialize();
+        }
+
         [TestMethod]
         public void WhenPublicationsViewIsShown_ThanAllAvailablePublicationsAreVisible()
         {
-            IPublicationRepository repository = A.Fake<IPublicationRepository>();
-            A.CallTo(() => repository.GetAll()).Returns(new List<Publication>() {new Publication(), new Publication()});
-
-            var sut = new PublicationsViewModel(repository);
-
-            sut.Initialize();
-
             Assert.AreNotEqual(0, sut.Publications.Count());
+        }
+
+        [TestMethod]
+        public void WhenPublicationsViewIsShown_ThanTheFirstElementInThePublicationsListIsSelected()
+        {
+            Assert.AreEqual(firstPublication, sut.SelectedPublication);
         }
     }
 }
