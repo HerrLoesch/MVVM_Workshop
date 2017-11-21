@@ -3,6 +3,8 @@ using System.Reflection;
 using System.Windows;
 using Autofac;
 using Autofac.Builder;
+using Autofac.Extras.CommonServiceLocator;
+using CommonServiceLocator;
 using PublicationManager.ViewModels;
 using PublicationManager.Views;
 
@@ -35,7 +37,14 @@ namespace PublicationManager.Infrastructure
             builder.RegisterAssemblyTypes(Assembly.GetCallingAssembly()).AsImplementedInterfaces();
             builder.RegisterAssemblyTypes(Assembly.GetCallingAssembly()).AsSelf();
 
-            return builder.Build();
+            var container = builder.Build();
+
+            // I cases we need the service locator, we use a common interface.
+            var autofacServiceLocator = new AutofacServiceLocator(container);
+            ServiceLocator.SetLocatorProvider(() => autofacServiceLocator);
+
+
+            return container;
         }
     }
 }

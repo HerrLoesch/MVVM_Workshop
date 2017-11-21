@@ -5,6 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PublicationManager.Views"
              xmlns:viewModels="clr-namespace:PublicationManager.ViewModels"
+             xmlns:infrastructure="clr-namespace:PublicationManager.Infrastructure"
+             infrastructure:ViewModelLocator.RegisterViewModel="true"
              d:DataContext="{d:DesignInstance Type=viewModels:PublicationViewModel, IsDesignTimeCreatable=True}"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
