@@ -9,6 +9,16 @@
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance IsDesignTimeCreatable=True, Type={x:Type viewModels:PublicationEntityViewModel}}"
              d:DesignHeight="300" d:DesignWidth="300">
+    
+    <UserControl.Resources>
+        <Style x:Key="ErrorStyle" TargetType="{x:Type TextBox}">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors).CurrentItem.ErrorContent}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -30,7 +40,7 @@
         <Label Grid.Column="0" Grid.Row="3">Publisher:</Label>
         <Label Grid.Column="0" Grid.Row="4">Comment:</Label>
 
-        <TextBox Grid.Column="2" Height="35" Grid.Row="0" Text="{Binding Title, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
+        <TextBox Grid.Column="2" Height="35" Grid.Row="0" Style="{StaticResource ErrorStyle}" Text="{Binding Title, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
             <i:Interaction.Behaviors>
                 <mvvm:FilterInputBehavior />
             </i:Interaction.Behaviors>
