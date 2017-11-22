@@ -30,7 +30,7 @@
         <Label Grid.Column="0" Grid.Row="3">Publisher:</Label>
         <Label Grid.Column="0" Grid.Row="4">Comment:</Label>
 
-        <TextBox Grid.Column="2" Height="35" Grid.Row="0" Text="{Binding Title}">
+        <TextBox Grid.Column="2" Height="35" Grid.Row="0" Text="{Binding Title, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
             <i:Interaction.Behaviors>
                 <mvvm:FilterInputBehavior />
             </i:Interaction.Behaviors>
