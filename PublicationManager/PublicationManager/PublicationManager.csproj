@@ -92,12 +92,16 @@
     <Compile Include="MVVM\EnhancedBooleanToVisibilityConverter.cs" />
     <Compile Include="Services\PublicationRepository.cs" />
     <Compile Include="ViewModels\MediumEntityViewModel.cs" />
+    <Compile Include="ViewModels\PublicationEntityViewModel.cs" />
     <Compile Include="ViewModels\PublicationViewModel.cs" />
     <Compile Include="Views\MediumView.xaml.cs">
       <DependentUpon>MediumView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MediumDetailsView.xaml.cs">
       <DependentUpon>MediumDetailsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PublicationDetailsEditView.xaml.cs">
+      <DependentUpon>PublicationDetailsEditView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PublicationDetailsView.xaml.cs">
       <DependentUpon>PublicationDetailsView.xaml</DependentUpon>
@@ -124,6 +128,10 @@
     <Page Include="Views\MediumDetailsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PublicationDetailsEditView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\PublicationDetailsView.xaml">
       <SubType>Designer</SubType>

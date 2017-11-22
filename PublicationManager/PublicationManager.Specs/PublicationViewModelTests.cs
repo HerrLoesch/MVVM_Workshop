@@ -39,7 +39,7 @@ namespace PublicationManager.Specs
         [TestMethod]
         public void WhenPublicationsViewIsShown_ThanTheFirstElementInThePublicationsListIsSelected()
         {
-            sut.SelectedPublication.ShouldBeEquivalentTo(firstPublication);
+            sut.SelectedPublication.Title.ShouldBeEquivalentTo(firstPublication.Title);
             sut.ShouldRaisePropertyChangeFor(x => x.SelectedPublication);
         }
     }

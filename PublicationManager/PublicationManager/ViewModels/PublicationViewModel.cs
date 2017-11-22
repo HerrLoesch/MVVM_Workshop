@@ -13,8 +13,8 @@ namespace PublicationManager.ViewModels
     public class PublicationViewModel : ViewModelBase
     {
         private IPublicationRepository publicationRepository;
-        private IEnumerable<Publication> publications;
-        private Publication selectedPublication;
+        private IEnumerable<PublicationEntityViewModel> publications;
+        private PublicationEntityViewModel selectedPublication;
         private ICommand initializationCommand;
         private bool isInEditMode = false;
 
@@ -22,7 +22,7 @@ namespace PublicationManager.ViewModels
         {
             if (IsInDesignMode)
             {
-                Publications = Randomizer<Publication>.Create(10);
+                Publications = Randomizer<PublicationEntityViewModel>.Create(10);
                 SelectedPublication = Publications.First();
             }
         }
@@ -47,13 +47,13 @@ namespace PublicationManager.ViewModels
 
         public void Initialize()
         {
-            Publications = publicationRepository.GetAll();
+            Publications = publicationRepository.GetAll().Select(x => new PublicationEntityViewModel(x)).ToList();
             SelectedPublication = Publications.FirstOrDefault();
         }
 
         public ICommand StartEdditingCommand { get; set; }
 
-        public IEnumerable<Publication> Publications
+        public IEnumerable<PublicationEntityViewModel> Publications
         {
             get { return publications; }
             set
@@ -62,7 +62,7 @@ namespace PublicationManager.ViewModels
             }
         }
 
-        public Publication SelectedPublication
+        public PublicationEntityViewModel SelectedPublication
         {
             get { return selectedPublication; }
             set
