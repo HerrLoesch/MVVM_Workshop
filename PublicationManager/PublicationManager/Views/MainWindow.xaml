@@ -5,6 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PublicationManager"
         xmlns:views="clr-namespace:PublicationManager.Views"
+        xmlns:services="clr-namespace:PublicationManager.Services"
+        xmlns:infrastructure="clr-namespace:PublicationManager.Infrastructure"
+
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
    <DockPanel>
@@ -19,8 +22,8 @@
            
            <!-- Edit -->
            <MenuItem Header="Edit">
-               <MenuItem Header="Publications..."></MenuItem>
-               <MenuItem Header="Media..."></MenuItem>
+                <MenuItem Header="Publications..." Command="{Binding ShowPublicationsCommand}"></MenuItem>
+                <MenuItem Header="Media..." Command="{Binding ShowMediaCommand}"></MenuItem>
            </MenuItem>
            
            <!-- Help -->
@@ -30,7 +33,7 @@
        </Menu>
        
        <!-- Main Content Area -->
-       <ContentControl x:Name="ContentArea" DockPanel.Dock="Bottom"></ContentControl>
+        <ContentControl services:NavigationManager.UseAsContentRegion="true"  x:Name="ContentArea" DockPanel.Dock="Bottom"></ContentControl>
 
     </DockPanel>
 </Window>

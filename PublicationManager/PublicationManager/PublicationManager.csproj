@@ -88,11 +88,14 @@
     <Compile Include="Domain\Publication.cs" />
     <Compile Include="Infrastructure\Bootstrapper.cs" />
     <Compile Include="Infrastructure\ViewModelLocator.cs" />
+    <Compile Include="Interfaces\INavigationManager.cs" />
     <Compile Include="Interfaces\IPublicationRepository.cs" />
     <Compile Include="MVVM\DelegateCommand.cs" />
     <Compile Include="MVVM\EnhancedBooleanToVisibilityConverter.cs" />
     <Compile Include="MVVM\FilterInputBehavior.cs" />
+    <Compile Include="Services\NavigationManager.cs" />
     <Compile Include="Services\PublicationRepository.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\MediumEntityViewModel.cs" />
     <Compile Include="ViewModels\PublicationEntityViewModel.cs" />
     <Compile Include="ViewModels\PublicationViewModel.cs" />

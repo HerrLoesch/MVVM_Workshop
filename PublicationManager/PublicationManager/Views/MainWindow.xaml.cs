@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using PublicationManager.ViewModels;
 
 namespace PublicationManager.Views
 {
@@ -12,9 +13,9 @@ namespace PublicationManager.Views
             InitializeComponent();
         }
 
-        public MainWindow(PublicationView publicationView) : this()
+        public MainWindow(MainWindowViewModel viewModel) : this()
         {
-            ContentArea.Content = publicationView;
+            DataContext = viewModel;
         }
     }
 }
