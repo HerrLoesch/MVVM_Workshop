@@ -17,7 +17,14 @@
     <UserControl.Resources>
         <mvvm:EnhancedBooleanToVisibilityConverter x:Key="ReverseBooleanToVisibilityConverter" Mode="Reverse" />
         <mvvm:EnhancedBooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" Mode="Normal" />
+        
+        <DataTemplate x:Key="DetailsTemplate">
+            <local:PublicationDetailsView />
+        </DataTemplate>
 
+        <DataTemplate x:Key="EditTemplate">
+            <local:PublicationDetailsEditView />
+        </DataTemplate>
     </UserControl.Resources>
 
     <i:Interaction.Triggers>
@@ -55,11 +62,17 @@
             </Grid.RowDefinitions>
             
             <ContentControl HorizontalAlignment="Center" VerticalAlignment="Center" Content="{Binding SelectedPublication}">
-                <ContentControl.ContentTemplate>
-                    <DataTemplate DataType="domain:Publication">
-                        <local:PublicationDetailsView />
-                    </DataTemplate>
-                </ContentControl.ContentTemplate>
+                <ContentControl.Style>
+                    <Style TargetType="{x:Type ContentControl}">
+                        <Setter Property="ContentTemplate" Value="{StaticResource DetailsTemplate}"></Setter>
+                        
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsInEditMode}" Value="true">
+                                <Setter Property="ContentTemplate" Value="{StaticResource EditTemplate}"></Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
             </ContentControl>
 
             <StackPanel Grid.Row="1" Orientation="Horizontal" Visibility="{Binding IsInEditMode, Converter={StaticResource ReverseBooleanToVisibilityConverter}}">
@@ -73,3 +86,4 @@
         </Grid>
     </DockPanel>
 </UserControl>
+
