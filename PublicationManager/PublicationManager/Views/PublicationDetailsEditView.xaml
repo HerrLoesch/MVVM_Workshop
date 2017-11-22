@@ -4,6 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewModels="clr-namespace:PublicationManager.ViewModels"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:mvvm="clr-namespace:PublicationManager.MVVM"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance IsDesignTimeCreatable=True, Type={x:Type viewModels:PublicationEntityViewModel}}"
              d:DesignHeight="300" d:DesignWidth="300">
@@ -28,7 +30,11 @@
         <Label Grid.Column="0" Grid.Row="3">Publisher:</Label>
         <Label Grid.Column="0" Grid.Row="4">Comment:</Label>
 
-        <TextBox Grid.Column="2" Height="35" Grid.Row="0" Text="{Binding Title}"></TextBox>
+        <TextBox Grid.Column="2" Height="35" Grid.Row="0" Text="{Binding Title}">
+            <i:Interaction.Behaviors>
+                <mvvm:FilterInputBehavior />
+            </i:Interaction.Behaviors>
+        </TextBox>
         <TextBox Grid.Column="2" Height="35" Grid.Row="1" Text="{Binding PublicationDate}"></TextBox>
         <ComboBox Grid.Column="2" Height="35" Grid.Row="2" SelectedValue="{Binding SelectedMedium.Name}"></ComboBox>
         <TextBlock Grid.Column="2" Height="35" Grid.Row="3" Text="{Binding SelectedMedium.Publisher}"></TextBlock>

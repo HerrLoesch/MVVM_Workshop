@@ -81,7 +81,7 @@
             </StackPanel>
             <StackPanel Grid.Row="1" Orientation="Horizontal" Visibility="{Binding IsInEditMode, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <Button Width="75">Save</Button>
-                <Button Width="75" Command="{Binding StartEdditingCommand}">Cancel</Button>
+                <Button Width="75">Cancel</Button>
             </StackPanel>
         </Grid>
     </DockPanel>
