@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using GalaSoft.MvvmLight;
 using PublicationManager.Domain;
 using Tynamix.ObjectFiller;
@@ -14,8 +17,9 @@ namespace PublicationManager.ViewModels
         private string comment;
         private Medium selectedMedium;
         private IEnumerable<Medium> media;
-        private bool hasErros;
 
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Please enter valid title.")]
+        [MinLength(3, ErrorMessage = "Please enter a title with at least three characters.")]
         public string Title
         {
             get { return title; }
@@ -71,21 +75,28 @@ namespace PublicationManager.ViewModels
 
         private string ValidateProperty(string propertyName)
         {
-            if (propertyName == nameof(Title) && string.IsNullOrWhiteSpace(Title))
+            var error = string.Empty;
+            var value = GetPropertyValue(propertyName, this);
+            var validationResults = new List<ValidationResult>();
+
+            var validationContext = new ValidationContext(this, null, null) { MemberName = propertyName };
+            var isValid = Validator.TryValidateProperty(value, validationContext, validationResults);
+
+            if (!isValid)
             {
-                HasErros = true;
-                return "No title was given.";
+                var results = validationResults.Where(x => x.ErrorMessage != null).ToList();
+                foreach (var validationResult in results)
+                {
+                    error += validationResult.ErrorMessage + Environment.NewLine;
+                }
             }
-
-            HasErros = false;
-
-            return string.Empty;
+            
+            return error;
         }
 
-        public bool HasErros
+        private object GetPropertyValue(string propertyName, PublicationEntityViewModel publicationEntityViewModel)
         {
-            get { return hasErros; }
-            set { Set(ref hasErros, value); }
+            return publicationEntityViewModel.GetType().GetProperty(propertyName).GetValue(publicationEntityViewModel);
         }
 
         public string Error { get { return null; } }
